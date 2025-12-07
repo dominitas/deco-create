@@ -137,6 +137,39 @@ After creating your app (via npm create or GitHub template), you must:
 
 **Note**: The template comes with default values (`name = "deco-create"`, `scope = "kmute"`). You must run `npm run configure` to set your own values before development or deployment.
 
+## 🔐 GitHub Secret: `DECO_DEPLOY_TOKEN`
+
+To enable **preview deployments** with GitHub Actions, you must configure a deploy token.
+
+### 1️⃣ Generate a Deco Deploy Token
+
+Run:
+```bash
+deco token create
+```
+Or generate one from your Deco dashboard.
+
+
+### 2️⃣ Add the Token to GitHub Secrets
+Go to your repository → Settings → Secrets and variables → Actions
+
+Click New repository secret
+
+Enter the exact name:
+DECO_DEPLOY_TOKEN
+
+Paste your deploy token and Save
+
+Your GitHub workflow will automatically read the token using:
+
+```yaml
+${{ secrets.DECO_DEPLOY_TOKEN }}
+```
+### ⚠️ Without this secret, preview deployments will fail.
+
+
+
+
 ## 📁 Project Structure
 
 ```
